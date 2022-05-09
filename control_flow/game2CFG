@@ -1,0 +1,82 @@
+digraph clustergame2 {
+	graph [label=game2]
+	1 [label="def game2(self, choice, chars_missing):...
+"]
+	subgraph clustergame2 {
+		graph [label=game2]
+		3 [label="word = choice
+hidden = '_' * len(word)
+hide = []
+"]
+		"3_calls" [label=len shape=box]
+		3 -> "3_calls" [label=calls style=dashed]
+		4 [label="for i in range(3):
+"]
+		5 [label="letter = word[int(chars_missing[i])]
+if letter not in hide:
+"]
+		"5_calls" [label=int shape=box]
+		5 -> "5_calls" [label=calls style=dashed]
+		7 [label="hide.append(letter)
+"]
+		"7_calls" [label="hide.append" shape=box]
+		7 -> "7_calls" [label=calls style=dashed]
+		7 -> 4 [label=""]
+		5 -> 7 [label="letter not in hide"]
+		5 -> 4 [label="(letter in hide)"]
+		4 -> 5 [label="range(3)"]
+		6 [label="hidden = self.wordChange(word, hide)
+letters = []
+attempts = 6
+"]
+		"6_calls" [label="self.wordChange" shape=box]
+		6 -> "6_calls" [label=calls style=dashed]
+		9 [label="while attempts > 0:
+"]
+		10 [label="guess = input('Make a letter guess! %s You have %d guesses remaining! ' % (
+    hidden, attempts))
+if guess in hide:
+"]
+		"10_calls" [label=input shape=box]
+		10 -> "10_calls" [label=calls style=dashed]
+		12 [label="hide.remove(guess)
+hidden = self.wordChange(word, hide)
+"]
+		"12_calls" [label="hide.remove
+self.wordChange" shape=box]
+		12 -> "12_calls" [label=calls style=dashed]
+		13 [label="print('So far you have incorrectly guessed')
+print(letters)
+if not hide:
+"]
+		"13_calls" [label="print
+print" shape=box]
+		13 -> "13_calls" [label=calls style=dashed]
+		15 [label="print('Great job! %s' % word)
+return True
+"]
+		"15_calls" [label=print shape=box]
+		15 -> "15_calls" [label=calls style=dashed]
+		13 -> 15 [label="not hide"]
+		13 -> 9 [label="(not not hide)"]
+		12 -> 13 [label=""]
+		10 -> 12 [label="guess in hide"]
+		14 [label="letters.append(guess)
+attempts -= 1
+"]
+		"14_calls" [label="letters.append" shape=box]
+		14 -> "14_calls" [label=calls style=dashed]
+		14 -> 13 [label=""]
+		10 -> 14 [label="(guess not in hide)"]
+		9 -> 10 [label="attempts > 0"]
+		11 [label="print('You failed! And should be ashamed... %s ' % word)
+return False
+"]
+		"11_calls" [label=print shape=box]
+		11 -> "11_calls" [label=calls style=dashed]
+		9 -> 11 [label="(attempts <= 0)"]
+		6 -> 9 [label=""]
+		4 -> 6 [label=""]
+		3 -> 4 [label=""]
+	}
+}
