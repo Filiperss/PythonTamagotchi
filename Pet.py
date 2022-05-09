@@ -49,14 +49,15 @@ class Pet:
             hidden = hidden.replace(xs[i], '_')
         return hidden
 
-    def game2(self):
-        words = ["apple", "butter", "cat", "dog", "elephant", "future", "ghost", "history", "icing", "jump", "kill", "little", "moth", "naughty", "octopus", "peanut", "quit", "race", "simple", "terrible", "unbeatable", "very", "wild", "xenoblast", "yoda", "zap"]
-        choice = random.randint(0, len(words) - 1)
-        word = words[choice]
+    def game2(self, choice, chars_missing):
+        #words = ["apple", "butter", "cat", "dog", "elephant", "future", "ghost", "history", "icing", "jump", "kill", "little", "moth", "naughty", "octopus", "peanut", "quit", "race", "simple", "terrible", "unbeatable", "very", "wild", "xenoblast", "yoda", "zap"]
+        #choice = random.randint(0, len(words) - 1)
+        #word = words[choice]
+        word = choice
         hidden = '_' * len(word)
         hide = []
         for i in range(3):
-            letter = word[random.randint(0, len(word) - 1)]
+            letter = word[int(chars_missing[i])]#word[random.randint(0, len(word) - 1)]
             if(letter not in hide):
                 hide.append(letter)
         hidden = self.wordChange(word, hide)
@@ -86,7 +87,12 @@ class Pet:
         if(choice == 1):
             won = self.game1()
         if(choice == 2):
-            won = self.game2()
+            words = ["apple", "butter", "cat", "dog", "elephant", "future", "ghost", "history", "icing", "jump", "kill", "little", "moth", "naughty", "octopus", "peanut", "quit", "race", "simple", "terrible", "unbeatable", "very", "wild", "xenoblast", "yoda", "zap"]
+            choice = int(input("Choose word, insert a number [0:9]: "))
+            chars_missing = str(input(f"Insert 3 numbers between 0 and {len(words[choice])-1}, separated by commas ex:1,2,3:")).split(",")
+            chars_missing = [num.strip() for num in chars_missing]
+            #print(chars_missing)
+            won = self.game2(words[choice],chars_missing)
         if(won):
             if(self.happy + game > 100):
                 self.happy = 100
@@ -157,4 +163,6 @@ class Pet:
             self.feed(2)
 
     def status(self):
-        print("%s\nAge: %d, Hunger: %d, Thirst: %d, Happiness: %d, Death: %d" % (self.name, self.age, self.hunger, self.thirst, self.happy, self.death))
+        print("-"*30+ " Status " + "-"*30)
+        print("Tamagochi Name: %s\nAge: %d, Hunger: %d, Thirst: %d, Happiness: %d, Death: %d" % (self.name, self.age, self.hunger, self.thirst, self.happy, self.death))
+        print("-"*68)

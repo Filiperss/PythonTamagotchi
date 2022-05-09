@@ -7,6 +7,7 @@ def playGame(thePet):
     while(choice != 0):
         try:
             theTime = int(time.time())
+            thePet.status()
             choice = int(input("What would you like to do?\n0 Quit, 1 Play, 2 Feed, 3 Water, 4 Punch, 5 Status: "))
             thePet.randomBehavior()
             if(choice == 0):
