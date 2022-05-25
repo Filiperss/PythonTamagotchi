@@ -74,10 +74,10 @@ class Pet:
             print("So far you have incorrectly guessed")
             print(letters)
             if(not hide):
-                print("Great job! %s" % (word))
+                print(f"Great job! {word}! You won with {attempts} attempts left.")
                 return True
 
-        print("You failed! And should be ashamed... %s " % (word))
+        print("You failed! The word was %s." % (word))
         return False
 
     def play(self, game, exp):
