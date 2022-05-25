@@ -87,7 +87,7 @@ class Pet:
         if(choice == 1):
             won = self.game1()
         if(choice == 2):
-            words = ["apple", "butter", "cat", "dog", "elephant", "future", "ghost", "history", "icing", "jump", "kill", "little", "moth", "naughty", "octopus", "peanut", "quit", "race", "simple", "terrible", "unbeatable", "very", "wild", "xenoblast", "yoda", "zap"]
+            words = ["apple", "butter", "cat", "dog", "elephant", "future", "ghost", "history", "icing", "jump"] #, "kill", "little", "moth", "naughty", "octopus", "peanut", "quit", "race", "simple", "terrible", "unbeatable", "very", "wild", "xenoblast", "yoda", "zap"]
             choice = int(input("Choose word, insert a number [0:9]: "))
             chars_missing = str(input(f"Insert 3 numbers between 0 and {len(words[choice])-1}, separated by commas ex:1,2,3:")).split(",")
             chars_missing = [num.strip() for num in chars_missing]
