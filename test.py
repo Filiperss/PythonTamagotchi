@@ -1,6 +1,7 @@
 from Game import newPet, playGame
 from Pet import Pet
 
+words = ["apple", "butter", "cat", "dog", "elephant", "future", "ghost", "history", "icing", "jump"]
 # Test P1
 def geninputs1():
     inputs = ['i','n']
@@ -10,7 +11,6 @@ def geninputs1():
 def test_p1(monkeypatch):   
     GEN = geninputs1()
     monkeypatch.setattr('builtins.input', lambda x: next(GEN))
-    words = ["apple", "butter", "cat", "dog", "elephant", "future", "ghost", "history", "icing", "jump"]
     currPet = Pet('name', 1, 10, 10, 10, 0, 3, 3)
     assert currPet.game2(words[8], [0,2,3])
 
@@ -30,7 +30,6 @@ def geninputs2():
 def test_p2(monkeypatch):   
     GEN = geninputs2()
     monkeypatch.setattr('builtins.input', lambda x: next(GEN))
-    words = ["apple", "butter", "cat", "dog", "elephant", "future", "ghost", "history", "icing", "jump"]
     currPet = Pet('name', 1, 10, 10, 10, 0, 3, 3)
     assert currPet.game2(words[6], [0,1,2])
 
@@ -43,6 +42,5 @@ def geninputs3():
 def test_p3(monkeypatch):   
     GEN = geninputs3()
     monkeypatch.setattr('builtins.input', lambda x: next(GEN))
-    words = ["apple", "butter", "cat", "dog", "elephant", "future", "ghost", "history", "icing", "jump"]
     currPet = Pet('name', 1, 10, 10, 10, 0, 3, 3)
     assert currPet.game2(words[8], [0,2,3])
