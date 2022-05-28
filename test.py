@@ -44,3 +44,4 @@ def test_p3(monkeypatch):
     monkeypatch.setattr('builtins.input', lambda x: next(GEN))
     currPet = Pet('name', 1, 10, 10, 10, 0, 3, 3)
     assert currPet.game2(words[8], [0,2,3]) == False
+

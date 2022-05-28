@@ -81,12 +81,15 @@ class Pet:
         return False
 
     def play(self, game, exp):
+        passed = False
         print()
         choice = int(input("Game 1 or 2? "))
         won = False
         if(choice == 1):
+            passed = True
             won = self.game1()
         if(choice == 2):
+            passed = True
             words = ["apple", "butter", "cat", "dog", "elephant", "future", "ghost", "history", "icing", "jump"] #, "kill", "little", "moth", "naughty", "octopus", "peanut", "quit", "race", "simple", "terrible", "unbeatable", "very", "wild", "xenoblast", "yoda", "zap"]
             choice = int(input("Choose word, insert a number [0:9]: "))
             chars_missing = str(input(f"Insert 3 numbers between 0 and {len(words[choice])-1}, separated by commas ex:1,2,3:")).split(",")
@@ -103,6 +106,8 @@ class Pet:
             self.feed(-exp)
             self.water(-exp)
 
+        return passed
+        
     def punch(self, hit):
         if(not self.die(hit)):
             if(self.happy <= 0):
