@@ -1,3 +1,4 @@
 *.pet
 .DS_Store
 __pycache__/
+__pycache__/Pet.cpython-310.pyc
