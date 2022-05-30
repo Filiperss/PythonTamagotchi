@@ -54,7 +54,7 @@ def test_blackbox_minus1(monkeypatch):
     GEN = genBoundaryMinus1()
     monkeypatch.setattr('builtins.input', lambda x: next(GEN))
     currPet = Pet('name', 1, 10, 10, 10, 0, 3, 3)
-    assert Pet.play(currPet, game=0, exp=0) is True
+    assert Pet.play(currPet, game=0, exp=0) is False
 
 def genBoundary3():
     choice = ['3']
@@ -68,4 +68,4 @@ def test_blackbox_3(monkeypatch):
     GEN = genBoundary3()
     monkeypatch.setattr('builtins.input', lambda x: next(GEN))
     currPet = Pet('name', 1, 10, 10, 10, 0, 3, 3)
-    assert Pet.play(currPet, game=0, exp=0) is True
+    assert Pet.play(currPet, game=0, exp=0) is False

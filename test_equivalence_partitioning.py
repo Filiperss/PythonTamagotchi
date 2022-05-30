@@ -2,6 +2,7 @@ import random
 from Game import newPet, playGame
 from Pet import Pet
 
+import sys
 
 """
 water(self, water):
@@ -144,11 +145,11 @@ def test_water_invalid_array():
 """
 ageUp(self, time):
     - Adds time to the age, making him older.
-    Time input'ed will be the new internal time if in valid values
+    Time inputted will be the new internal time if in valid values
     - Valid values: [86400;∞[ <- this value will be get with InputTime - InternalTime, we will consider the internalTime to be 0
 
 Partitions:
-    - Valid: [86400;99999] [100000; 999999] [1000000; 9999999] [10000000;99999999]
+    - Valid: [86400;99999] [100000; 999999] [1000000; 9999999] [10000000;99999999] MAXINT
     - Invalid: [0;86400][-86400;-1] None String Obj Array
 """
 
@@ -181,6 +182,13 @@ def test_ageUp_10000000_99999999():
     #Pet Generation with 0 Time
     currPet = Pet('name', 1, 90, 0, 0, False, 0, 0)
 
+    assert Pet.ageUp(currPet, time=from_partition)
+
+
+def test_ageUp_max_int():
+    from_partition = sys.maxsize
+    #Pet Generation with 0 Time
+    currPet = Pet('name', 1, 90, 0, 0, False, 0, 0)
     assert Pet.ageUp(currPet, time=from_partition)
 
 
@@ -226,5 +234,5 @@ def test_ageUp_invalid_array():
     from_partition = []
     #Pet Generation with 0 Time
     currPet = Pet('name', 1, 90, 0, 0, False, 0, 0)
-    
+
     assert Pet.ageUp(currPet, time=from_partition) == False
