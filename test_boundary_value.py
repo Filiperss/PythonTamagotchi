@@ -1,10 +1,21 @@
 from Game import newPet, playGame
 from Pet import Pet
 
-"""Boundary [1,2] test: [-1,1,2,3]"""
+"""
+Test of the method play(self,game,exp)
+    - attributes
+        - self (the Pet object reference)
+        - game: Will impact the happiness of the Pet.
+        - exp: Will affect the thirst and hunger of the Pet by having played a game.
+
+    NOTE: This attributes aren't relevant to the test, but still required to execute the method
+
+    Boundary [1,2] 
+    TBoundary Values to be tested: [-1,1,2,3]
+"""
 def genBoundary1():
     choice = ['1']
-    gameConditions = ['0']
+    gameConditions = ['0'] # Number to guess, not relevant but required to end the function
     inputs = choice + gameConditions
     for i in inputs:
         yield i
@@ -18,7 +29,7 @@ def test_blackbox_1(monkeypatch):
 
 def genBoundary2():
     choice = ['2']
-    gameConditions = ['8','0','1','2']
+    gameConditions = ['8','0','1','2'] # Letters to be guessed, not relevant but required to end the function
     inputs = choice + gameConditions
     for i in inputs:
         yield i
@@ -46,7 +57,7 @@ def test_blackbox_minus1(monkeypatch):
     assert Pet.play(currPet, game=0, exp=0) is True
 
 def genBoundary3():
-    choice = ['-1']
+    choice = ['3']
     gameConditions = []
     inputs = choice + gameConditions
     for i in inputs:
