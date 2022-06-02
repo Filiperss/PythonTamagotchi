@@ -14,50 +14,6 @@ Partitions:
     - Valid: [0][1;9][10;99][100]
     - Invalid: [-9;-1][101;125] None String Obj Array
 """
-# def test_water():
-#     #Equivalence Inputs
-#     equivalence_valid_inputs = [
-#         0,
-#         random.randint(1, 9),
-#         random.randint(10,99),
-#         100
-#     ]
-
-#     equivalence_invalid_inputs = [
-#         -(random.randint(1, 9)),
-#         random.randint(101, 125),
-#         None,
-#         'string',
-#         {None : None},
-#         []
-#     ]
-    
-#     #Catch Errors
-#     errors = []
-
-#     for value in equivalence_valid_inputs:
-#         #Pet Generation with 0 Thirst
-#         currPet = Pet('name', 1, 90, 0, 0, False, 3, 3)
-#         #Call the Function to be tested
-#         Pet.water(currPet, water= value )
-#         if currPet.thirst != value: 
-#             errors.append(value)
-
-#     for value in equivalence_invalid_inputs:
-#         #Pet Generation with 0 Thirst
-#         currPet = Pet('name', 1, 90, 0, 0, False, 3, 3)
-#         #Call the Function to be tested
-#         try:
-#             Pet.water(currPet, water=value)
-#             if currPet.thirst != 0 and (currPet.thirst != 100 and (value >= 101 and value <= 125)):
-#                 errors.append(value)
-#             print(str(value) + " - " + str(currPet.thirst))
-#         except: 
-#             print("E: "+ str(value) + " - " + str(currPet.thirst))
-#             errors.append(value)
-#             continue
-
-#     assert not errors, "errors occured: " + str(errors)
 
 def test_water_part0():
     from_partition = 0;
@@ -66,7 +22,6 @@ def test_water_part0():
     Pet.water(currPet, water=from_partition)
     
     assert currPet.thirst == from_partition
-
 
 def test_water_part1_9():
     from_partition = random.randint(1, 9)
@@ -141,7 +96,6 @@ def test_water_invalid_array():
 
     assert currPet.thirst == 0
 
-
 """
 ageUp(self, time):
     - Adds time to the age, making him older.
@@ -152,7 +106,6 @@ Partitions:
     - Valid: [86400;99999] [100000; 999999] [1000000; 9999999] [10000000;99999999] MAXINT
     - Invalid: [0;86400][-86400;-1] None String Obj Array
 """
-
 
 def test_ageUp_86400_99999():
     from_partition = random.randint(86400, 99999)
